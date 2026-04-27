@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
-import { motion } from 'framer-motion'
+import { motion, AnimatePresence } from 'framer-motion'
 import { ArrowRight, Scale, Users, Calendar, BookOpen } from 'lucide-react'
 import SectionTitle from '../components/SectionTitle'
 import EventCard from '../components/EventCard'
@@ -17,6 +17,17 @@ export default function Home() {
     sections: []
   })
   const [loading, setLoading] = useState(true)
+  const [currentSlide, setCurrentSlide] = useState(0)
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setCurrentSlide((prev) => {
+        const length = data.home?.heroImages?.length > 0 ? data.home.heroImages.length : 3;
+        return (prev + 1) % length;
+      })
+    }, 5000)
+    return () => clearInterval(timer)
+  }, [data.home?.heroImages])
 
   useEffect(() => {
     async function fetchData() {
@@ -68,22 +79,36 @@ export default function Home() {
   }
 
   const { home, events, blogs, sections } = data
-  const heroImage = home?.heroImage ? urlFor(home.heroImage).url() : 'https://images.unsplash.com/photo-1589829085413-56de8ae18c73?auto=format&fit=crop&q=80&w=1920'
+  const defaultImages = [
+    'https://images.unsplash.com/photo-1589829085413-56de8ae18c73?auto=format&fit=crop&q=80&w=1920',
+    'https://images.unsplash.com/photo-1450101499163-c8848c66ca85?auto=format&fit=crop&q=80&w=1920',
+    'https://images.unsplash.com/photo-1505664159854-23285de84815?auto=format&fit=crop&q=80&w=1920'
+  ]
+  const heroImages = home?.heroImages?.length > 0 
+    ? home.heroImages.map(img => urlFor(img).url()) 
+    : defaultImages
 
   return (
     <div className="overflow-hidden">
       {/* Hero Section */}
       <section className="relative h-[90vh] flex items-center">
-        <div className="absolute inset-0 z-0">
-          <img 
-            src={heroImage}
-            alt="Courthouse" 
-            className="w-full h-full object-cover"
-          />
-          <div className="absolute inset-0 bg-navy-900/70"></div>
+        <div className="absolute inset-0 z-0 overflow-hidden">
+          <AnimatePresence initial={false}>
+            <motion.img 
+              key={currentSlide}
+              src={heroImages[currentSlide]}
+              alt="Hero Background Slide" 
+              className="absolute inset-0 w-full h-full object-cover"
+              initial={{ opacity: 0, scale: 1.05 }}
+              animate={{ opacity: 1, scale: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 1.5, ease: "easeInOut" }}
+            />
+          </AnimatePresence>
+          <div className="absolute inset-0 bg-navy-900/70 z-10"></div>
         </div>
         
-        <div className="container mx-auto px-4 lg:px-8 relative z-10">
+        <div className="container mx-auto px-4 lg:px-8 relative z-20">
           <div className="max-w-3xl">
             <motion.div
               initial={{ opacity: 0, y: 30 }}

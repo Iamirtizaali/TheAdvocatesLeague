@@ -19,7 +19,7 @@ export const homePage = {
   fields: [
     { name: 'heroTitle', title: 'Hero Title', type: 'string' },
     { name: 'heroSubtitle', title: 'Hero Subtitle', type: 'text' },
-    { name: 'heroImage', title: 'Hero Background Image', type: 'image' },
+    { name: 'heroImages', title: 'Hero Background Images (Slider)', type: 'array', of: [{ type: 'image' }] },
     { name: 'missionStatement', title: 'Mission Statement', type: 'text' },
     { name: 'visionStatement', title: 'Vision Statement', type: 'text' },
   ],
