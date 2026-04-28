@@ -91,7 +91,7 @@ export default function Home() {
   return (
     <div className="overflow-hidden">
       {/* Hero Section */}
-      <section className="relative min-h-[90vh] py-32 flex items-center">
+      <section className="relative min-h-[100svh] py-24 md:py-32 flex items-center">
         <div className="absolute inset-0 z-0 overflow-hidden">
           <AnimatePresence initial={false}>
             <motion.img 
@@ -119,18 +119,18 @@ export default function Home() {
                 <Scale size={16} />
                 Welcome to The Advocates\\' League
               </div>
-              <h1 className="text-5xl md:text-7xl font-serif font-bold text-white mb-6 leading-tight">
+              <h1 className="text-4xl md:text-6xl lg:text-7xl font-serif font-bold text-white mb-6 leading-tight">
                 {home.heroTitle}
               </h1>
               <p className="text-xl text-gray-200 mb-10 max-w-2xl leading-relaxed">
                 {home.heroSubtitle}
               </p>
               
-              <div className="flex flex-wrap gap-4">
-                <Link to="/about" className="px-8 py-4 bg-gold-600 hover:bg-gold-500 text-white font-semibold rounded-md transition-colors shadow-lg hover:shadow-gold-500/30">
+              <div className="flex flex-col sm:flex-row flex-wrap gap-4">
+                <Link to="/about" className="w-full sm:w-auto text-center px-8 py-4 bg-gold-600 hover:bg-gold-500 text-white font-semibold rounded-md transition-colors shadow-lg hover:shadow-gold-500/30">
                   Discover Our Mission
                 </Link>
-                <Link to="/contact" className="px-8 py-4 bg-transparent border-2 border-white hover:bg-white hover:text-navy-900 text-white font-semibold rounded-md transition-colors">
+                <Link to="/contact" className="w-full sm:w-auto text-center px-8 py-4 bg-transparent border-2 border-white hover:bg-white hover:text-navy-900 text-white font-semibold rounded-md transition-colors">
                   Get Involved
                 </Link>
               </div>
@@ -276,7 +276,7 @@ export default function Home() {
             <p className="text-xl text-gray-300 mb-10 max-w-2xl mx-auto">
               Take the next step in your legal education. Connect with peers, participate in events, and build your professional network.
             </p>
-            <Link to="/contact" className="px-10 py-4 bg-gold-600 hover:bg-gold-500 text-white text-lg font-bold rounded-md transition-colors shadow-lg hover:shadow-gold-500/30 inline-block">
+            <Link to="/contact" className="w-full sm:w-auto px-10 py-4 bg-gold-600 hover:bg-gold-500 text-white text-lg font-bold rounded-md transition-colors shadow-lg hover:shadow-gold-500/30 inline-block">
               Become a Member Today
             </Link>
           </motion.div>

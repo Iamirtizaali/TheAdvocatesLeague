@@ -47,7 +47,7 @@ export default function Navbar() {
             <Scale size={24} className="group-hover:scale-110 transition-transform" />
           </div>
           <span className={cn(
-            "font-serif font-bold text-xl md:text-2xl tracking-wide",
+            "font-serif font-bold text-lg md:text-xl lg:text-2xl tracking-wide",
             scrolled ? "text-navy-900" : "text-white"
           )}>
             The Advocates\\' League
