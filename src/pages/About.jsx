@@ -15,14 +15,22 @@ export default function About() {
   }, [])
 
   const content = data || {
-    aboutText: "The Advocates League is a premier student-run organization dedicated to advancing legal discourse, advocacy skills, and professional development among aspiring law professionals. Established with a vision to bridge the gap between academic learning and practical application, we strive to create a vibrant platform for comprehensive legal education.",
+    aboutText: "The Advocates\\' League is a premier student-run organization dedicated to advancing legal discourse, advocacy skills, and professional development among aspiring law professionals. Established with a vision to bridge the gap between academic learning and practical application, we strive to create a vibrant platform for comprehensive legal education.",
+    whoWeAre: "We are a diverse group of passionate individuals united by a shared commitment to excellence in the legal profession.",
+    coreValues: [
+      { title: 'Mission-Driven', description: 'Focused on impact.' },
+      { title: 'Innovative', description: 'Thinking outside the box.' },
+      { title: 'Ethical', description: 'Upholding the highest standards.' },
+      { title: 'Excellence', description: 'Striving for perfection.' }
+    ],
     objectives: [
       "To foster practical legal skills through mooting, negotiation, and drafting competitions.",
       "To cultivate a culture of legal research and academic writing.",
       "To provide networking opportunities with distinguished legal professionals.",
       "To promote awareness about contemporary socio-legal issues."
     ],
-    history: "Founded in 2018, The Advocates League began as a small study circle and has grown into a robust organization with multiple specialized divisions, impacting hundreds of students annually."
+    history: "Founded in 2018, The Advocates\\' League began as a small study circle and has grown into a robust organization with multiple specialized divisions, impacting hundreds of students annually.",
+    journeyText: "These pillars guide all our initiatives, events, and programs throughout the academic year."
   }
 
   return (
@@ -42,7 +50,7 @@ export default function About() {
           transition={{ delay: 0.2 }}
           className="text-gray-300 max-w-2xl mx-auto px-4 text-lg"
         >
-          Discover our mission, vision, and the core values that drive The Advocates League forward.
+          Discover our mission, vision, and the core values that drive The Advocates\\' League forward.
         </motion.p>
       </div>
 
@@ -59,6 +67,11 @@ export default function About() {
             <p className="text-gray-600 leading-relaxed text-lg mb-6">
               {content.aboutText}
             </p>
+            {content.whoWeAre && (
+              <p className="text-gray-600 leading-relaxed text-lg mb-6">
+                {content.whoWeAre}
+              </p>
+            )}
             <div className="w-20 h-1 bg-gold-600"></div>
           </motion.div>
           
@@ -69,19 +82,23 @@ export default function About() {
             transition={{ duration: 0.6 }}
             className="grid grid-cols-2 gap-6"
           >
-            {[
-              { icon: Target, title: 'Mission-Driven' },
-              { icon: Lightbulb, title: 'Innovative' },
-              { icon: Shield, title: 'Ethical' },
-              { icon: Award, title: 'Excellence' }
-            ].map((item, i) => (
+            {(content.coreValues || [
+              { title: 'Mission-Driven' },
+              { title: 'Innovative' },
+              { title: 'Ethical' },
+              { title: 'Excellence' }
+            ]).map((item, i) => {
+              const icons = [Target, Lightbulb, Shield, Award];
+              const IconComponent = icons[i % icons.length];
+              return (
               <div key={i} className="bg-white p-6 rounded-xl shadow-sm border border-gray-100 flex flex-col items-center text-center">
                 <div className="w-12 h-12 bg-gold-100 text-gold-600 rounded-full flex items-center justify-center mb-4">
-                  <item.icon size={24} />
+                  <IconComponent size={24} />
                 </div>
                 <h3 className="font-serif font-bold text-navy-900">{item.title}</h3>
+                {item.description && <p className="text-gray-500 text-sm mt-2">{item.description}</p>}
               </div>
-            ))}
+            )})}
           </motion.div>
         </div>
 
@@ -91,7 +108,7 @@ export default function About() {
             <div className="bg-navy-900 text-white p-10 lg:p-14 flex flex-col justify-center">
               <h2 className="text-3xl font-serif font-bold mb-4">Our Core Objectives</h2>
               <p className="text-gray-300">
-                These pillars guide all our initiatives, events, and programs throughout the academic year.
+                {content.journeyText || "These pillars guide all our initiatives, events, and programs throughout the academic year."}
               </p>
             </div>
             <div className="col-span-2 p-10 lg:p-14">

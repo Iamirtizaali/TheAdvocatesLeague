@@ -48,6 +48,24 @@ export default function BlogDetail() {
   const imageUrl = blog.image ? urlFor(blog.image).url() : 'https://images.unsplash.com/photo-1505664159854-23285de84815?auto=format&fit=crop&q=80&w=1200'
   const date = new Date(blog.publishedAt || new Date())
 
+  const components = {
+    types: {
+      image: ({ value }) => {
+        if (!value?.asset?._ref) {
+          return null
+        }
+        return (
+          <img
+            alt={value.alt || ' '}
+            loading="lazy"
+            src={urlFor(value).width(800).fit('max').auto('format').url()}
+            className="rounded-lg shadow-md my-8 mx-auto"
+          />
+        )
+      }
+    }
+  }
+
   return (
     <div className="bg-subtle min-h-screen pb-24">
       <div className="container mx-auto px-4 lg:px-8 pt-12">
@@ -79,14 +97,13 @@ export default function BlogDetail() {
               </div>
             </div>
 
-            <div className="prose prose-lg max-w-none prose-headings:font-serif prose-headings:text-navy-900 prose-a:text-gold-600 text-gray-700">
+            <div className="prose prose-lg max-w-none text-justify prose-headings:font-serif prose-headings:text-navy-900 prose-a:text-gold-600 text-gray-700">
               {blog.content && blog.content.length > 0 ? (
-                <PortableText value={blog.content} />
+                <PortableText value={blog.content} components={components} />
               ) : (
                 <>
                   <p className="lead text-xl text-navy-800 mb-6 font-medium">{blog.excerpt}</p>
-                  <p>In the contemporary realm, understanding constitutional principles goes beyond the written text. It requires a deep analysis of societal needs, historical context, and evolving standards of decency.</p>
-                  <p>This space is reserved for a full-length article. Please populate your Sanity CMS with rich text content to see it beautifully rendered here!</p>
+                  <p>No further detailed content available for this article.</p>
                 </>
               )}
             </div>

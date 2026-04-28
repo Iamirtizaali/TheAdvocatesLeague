@@ -58,7 +58,7 @@ export default function Team() {
           transition={{ delay: 0.2 }}
           className="text-gray-300 max-w-2xl mx-auto px-4 text-lg"
         >
-          Meet the dedicated individuals working behind the scenes to make The Advocates League a success.
+          Meet the dedicated individuals working behind the scenes to make The Advocates\\' League a success.
         </motion.p>
       </div>
 

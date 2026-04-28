@@ -6,7 +6,7 @@ export const SUBSECTIONS_QUERY = `*[_type == "subsection"] | order(order asc)`
 export const SUBSECTION_BY_SLUG_QUERY = `*[_type == "subsection" && slug.current == $slug][0]`
 export const EVENTS_QUERY = `*[_type == "event"] | order(date desc)`
 export const EVENT_BY_SLUG_QUERY = `*[_type == "event" && slug.current == $slug][0]`
-export const BLOGS_QUERY = `*[_type == "blog"] | order(publishedAt desc)`
+export const BLOGS_QUERY = `*[_type == "blog"] | order(publishedAt desc, _createdAt desc)`
 export const BLOG_BY_SLUG_QUERY = `*[_type == "blog" && slug.current == $slug][0]`
 export const GALLERY_QUERY = `*[_type == "gallery"]`
 export const CONTACT_INFO_QUERY = `*[_type == "contactInfo"][0]`

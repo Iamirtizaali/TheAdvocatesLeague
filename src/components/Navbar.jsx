@@ -50,7 +50,7 @@ export default function Navbar() {
             "font-serif font-bold text-xl md:text-2xl tracking-wide",
             scrolled ? "text-navy-900" : "text-white"
           )}>
-            The Advocates League
+            The Advocates\\' League
           </span>
         </Link>
 

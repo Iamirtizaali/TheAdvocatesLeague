@@ -47,6 +47,24 @@ export default function EventDetail() {
   const imageUrl = event.image ? urlFor(event.image).url() : 'https://images.unsplash.com/photo-1589829085413-56de8ae18c73?auto=format&fit=crop&q=80&w=1200'
   const date = new Date(event.date || new Date())
 
+  const components = {
+    types: {
+      image: ({ value }) => {
+        if (!value?.asset?._ref) {
+          return null
+        }
+        return (
+          <img
+            alt={value.alt || ' '}
+            loading="lazy"
+            src={urlFor(value).width(800).fit('max').auto('format').url()}
+            className="rounded-lg shadow-md my-8 mx-auto"
+          />
+        )
+      }
+    }
+  }
+
   return (
     <div className="bg-subtle min-h-screen pb-24">
       <div className="relative h-[50vh] min-h-[400px]">
@@ -76,16 +94,33 @@ export default function EventDetail() {
 
       <div className="container mx-auto px-4 lg:px-8 -mt-20 relative z-10">
         <div className="bg-white rounded-xl shadow-xl p-8 max-w-4xl mx-auto border border-gray-100">
-          <div className="prose prose-lg max-w-none prose-headings:font-serif prose-headings:text-navy-900 prose-a:text-gold-600">
+          <div className="prose prose-lg max-w-none text-justify mx-auto prose-headings:font-serif prose-headings:text-navy-900 prose-a:text-gold-600">
             {event.content && event.content.length > 0 ? (
-              <PortableText value={event.content} />
+              <PortableText value={event.content} components={components} />
             ) : (
               <div>
                 <p className="lead text-xl text-gray-600 mb-6">{event.description}</p>
-                <p>Join us for this exciting program where legal minds come together. More details will be shared closer to the date.</p>
+                <p>No further detailed content available for this event.</p>
               </div>
             )}
           </div>
+          
+          {event.gallery && event.gallery.length > 0 && (
+            <div className="mt-16 border-t border-gray-100 pt-12">
+              <h2 className="text-3xl font-serif font-bold text-navy-900 mb-8 text-center">Event Gallery</h2>
+              <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+                {event.gallery.map((img, idx) => (
+                  <div key={idx} className="aspect-square overflow-hidden rounded-xl shadow-sm">
+                    <img 
+                      src={urlFor(img).width(600).height(600).fit('crop').url()} 
+                      alt={`Gallery image ${idx + 1}`}
+                      className="w-full h-full object-cover hover:scale-110 transition-transform duration-500 cursor-pointer"
+                    />
+                  </div>
+                ))}
+              </div>
+            </div>
+          )}
         </div>
       </div>
     </div>

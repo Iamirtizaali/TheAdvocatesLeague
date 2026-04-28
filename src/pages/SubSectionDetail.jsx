@@ -41,6 +41,24 @@ export default function SubSectionDetail() {
 
   const imageUrl = section.image ? urlFor(section.image).url() : 'https://images.unsplash.com/photo-1575509545089-8dcb4e11cc7c?auto=format&fit=crop&q=80&w=1200'
 
+  const components = {
+    types: {
+      image: ({ value }) => {
+        if (!value?.asset?._ref) {
+          return null
+        }
+        return (
+          <img
+            alt={value.alt || ' '}
+            loading="lazy"
+            src={urlFor(value).width(800).fit('max').auto('format').url()}
+            className="rounded-lg shadow-md my-8 mx-auto"
+          />
+        )
+      }
+    }
+  }
+
   return (
     <div className="bg-subtle min-h-screen pb-24">
       <div className="relative h-[40vh] min-h-[300px]">
@@ -61,13 +79,13 @@ export default function SubSectionDetail() {
 
       <div className="container mx-auto px-4 lg:px-8 pt-16 mt-8">
         <div className="bg-white rounded-xl shadow-md p-8 md:p-12 mb-12 border border-gray-100 max-w-5xl mx-auto">
-          <div className="prose prose-lg max-w-none prose-headings:font-serif prose-headings:text-navy-900 prose-a:text-gold-600">
+          <div className="prose prose-lg max-w-none text-justify mx-auto prose-headings:font-serif prose-headings:text-navy-900 prose-a:text-gold-600">
             {section.content && section.content.length > 0 ? (
-              <PortableText value={section.content} />
+              <PortableText value={section.content} components={components} />
             ) : (
               <div>
                 <h2>Welcome to {section.title}</h2>
-                <p>This division of The Advocates League is dedicated to specialized aspects of legal development. We organize focused workshops, seminars, and networking sessions.</p>
+                <p>This division of The Advocates\\' League is dedicated to specialized aspects of legal development. We organize focused workshops, seminars, and networking sessions.</p>
                 <p>Content will be updated soon from the CMS.</p>
               </div>
             )}

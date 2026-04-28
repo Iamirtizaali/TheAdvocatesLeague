@@ -12,10 +12,12 @@ import Blogs from './pages/Blogs'
 import BlogDetail from './pages/BlogDetail'
 import Contact from './pages/Contact'
 import NotFound from './pages/NotFound'
+import ScrollToTop from './components/ScrollToTop'
 
 function App() {
   return (
     <div className="flex flex-col min-h-screen">
+      <ScrollToTop />
       <Navbar />
       <main className="flex-grow pt-20">
         <Routes>

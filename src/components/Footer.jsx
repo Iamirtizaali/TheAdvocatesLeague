@@ -1,8 +1,29 @@
+import { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { Scale, Mail, Phone, MapPin } from 'lucide-react'
-import { FaInstagram, FaLinkedin, FaTwitter } from 'react-icons/fa'
+import { FaInstagram, FaLinkedin, FaTwitter, FaFacebook } from 'react-icons/fa'
+import { client } from '../sanity/client'
+import { CONTACT_INFO_QUERY } from '../sanity/queries'
 
 export default function Footer() {
+  const [contact, setContact] = useState(null)
+
+  useEffect(() => {
+    client.fetch(CONTACT_INFO_QUERY).then(res => {
+      if (res) setContact(res)
+    }).catch(console.error)
+  }, [])
+
+  const info = contact || {
+    address: '123 Law University Campus, Legal Avenue, City, State ZIP',
+    phone: '+1 (555) 123-4567',
+    email: 'contact@advocatesleague.com',
+    instagram: '#',
+    linkedin: '#',
+    twitter: '#',
+    facebook: '#'
+  }
+
   return (
     <footer className="bg-navy-900 text-white pt-16 pb-8">
       <div className="container mx-auto px-4 lg:px-8">
@@ -14,7 +35,7 @@ export default function Footer() {
               <div className="p-1.5 rounded bg-gold-500 text-navy-900">
                 <Scale size={20} />
               </div>
-              <span className="font-serif font-bold tracking-wide text-xl">The Advocates League</span>
+              <span className="font-serif font-bold tracking-wide text-xl">The Advocates\\' League</span>
             </Link>
             <p className="text-gray-400 text-sm leading-relaxed mt-4">
               A premier law college society dedicated to nurturing legal minds, fostering dialogue, and building the next generation of legal professionals.
@@ -45,15 +66,15 @@ export default function Footer() {
             <ul className="space-y-4">
               <li className="flex items-start gap-3 text-gray-300 text-sm">
                 <MapPin className="text-gold-500 shrink-0 mt-0.5" size={18} />
-                <span>123 Law University Campus,<br/>Legal Avenue, City, State ZIP</span>
+                <span>{info.address}</span>
               </li>
               <li className="flex items-center gap-3 text-gray-300 text-sm">
                 <Phone className="text-gold-500 shrink-0" size={18} />
-                <span>+1 (555) 123-4567</span>
+                <span>{info.phone}</span>
               </li>
               <li className="flex items-center gap-3 text-gray-300 text-sm">
                 <Mail className="text-gold-500 shrink-0" size={18} />
-                <span>contact@advocatesleague.com</span>
+                <span>{info.email}</span>
               </li>
             </ul>
           </div>
@@ -79,18 +100,29 @@ export default function Footer() {
         {/* Bottom */}
         <div className="flex flex-col md:flex-row justify-between items-center gap-4">
           <p className="text-gray-400 text-sm text-center md:text-left">
-            &copy; {new Date().getFullYear()} The Advocates League. All rights reserved.
+            &copy; {new Date().getFullYear()} The Advocates\\' League. All rights reserved.
           </p>
           <div className="flex gap-4">
-            <a href="#" className="p-2 rounded-full bg-navy-800 text-gray-300 hover:text-white hover:bg-gold-600 transition-all">
-              <FaInstagram size={18} />
-            </a>
-            <a href="#" className="p-2 rounded-full bg-navy-800 text-gray-300 hover:text-white hover:bg-gold-600 transition-all">
-              <FaLinkedin size={18} />
-            </a>
-            <a href="#" className="p-2 rounded-full bg-navy-800 text-gray-300 hover:text-white hover:bg-gold-600 transition-all">
-              <FaTwitter size={18} />
-            </a>
+            {info.instagram && (
+              <a href={info.instagram} target="_blank" rel="noopener noreferrer" className="p-2 rounded-full bg-navy-800 text-gray-300 hover:text-white hover:bg-gold-600 transition-all">
+                <FaInstagram size={18} />
+              </a>
+            )}
+            {info.facebook && (
+              <a href={info.facebook} target="_blank" rel="noopener noreferrer" className="p-2 rounded-full bg-navy-800 text-gray-300 hover:text-white hover:bg-gold-600 transition-all">
+                <FaFacebook size={18} />
+              </a>
+            )}
+            {info.linkedin && (
+              <a href={info.linkedin} target="_blank" rel="noopener noreferrer" className="p-2 rounded-full bg-navy-800 text-gray-300 hover:text-white hover:bg-gold-600 transition-all">
+                <FaLinkedin size={18} />
+              </a>
+            )}
+            {info.twitter && (
+              <a href={info.twitter} target="_blank" rel="noopener noreferrer" className="p-2 rounded-full bg-navy-800 text-gray-300 hover:text-white hover:bg-gold-600 transition-all">
+                <FaTwitter size={18} />
+              </a>
+            )}
           </div>
         </div>
       </div>

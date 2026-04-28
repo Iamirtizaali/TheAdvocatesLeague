@@ -42,7 +42,7 @@ export default function Home() {
         setData({
           home: homeData || {
             heroTitle: 'Fostering Excellence in Legal Education',
-            heroSubtitle: 'The Advocates League is a premier student-run organization dedicated to advancing legal discourse, advocacy skills, and professional development.',
+            heroSubtitle: 'The Advocates\\' League is a premier student-run organization dedicated to advancing legal discourse, advocacy skills, and professional development.',
             missionStatement: 'To create a vibrant community of legal scholars who are well-equipped to tackle contemporary justice challenges.',
           },
           events: eventsData && eventsData.length > 0 ? eventsData.slice(0, 3) : [{}, {}, {}],
@@ -55,7 +55,7 @@ export default function Home() {
         setData({
           home: {
             heroTitle: 'Fostering Excellence in Legal Education',
-            heroSubtitle: 'The Advocates League is a premier student-run organization dedicated to advancing legal discourse, advocacy skills, and professional development.',
+            heroSubtitle: 'The Advocates\\' League is a premier student-run organization dedicated to advancing legal discourse, advocacy skills, and professional development.',
             missionStatement: 'To create a vibrant community of legal scholars who are well-equipped to tackle contemporary justice challenges.',
           },
           events: [{}, {}, {}],
@@ -91,7 +91,7 @@ export default function Home() {
   return (
     <div className="overflow-hidden">
       {/* Hero Section */}
-      <section className="relative h-[90vh] flex items-center">
+      <section className="relative min-h-[90vh] py-32 flex items-center">
         <div className="absolute inset-0 z-0 overflow-hidden">
           <AnimatePresence initial={false}>
             <motion.img 
@@ -117,7 +117,7 @@ export default function Home() {
             >
               <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-gold-600/20 border border-gold-500/30 text-gold-500 font-semibold text-sm mb-6 uppercase tracking-wider backdrop-blur-sm">
                 <Scale size={16} />
-                Welcome to The Advocates League
+                Welcome to The Advocates\\' League
               </div>
               <h1 className="text-5xl md:text-7xl font-serif font-bold text-white mb-6 leading-tight">
                 {home.heroTitle}
@@ -194,7 +194,7 @@ export default function Home() {
           <div className="flex flex-col md:flex-row justify-between items-end mb-12">
             <SectionTitle 
               title="Our Divisions" 
-              subtitle="The Advocates League operates through specialized divisions to maximize our impact."
+              subtitle="The Advocates\\' League operates through specialized divisions to maximize our impact."
               className="text-left mb-0"
             />
             <Link to="/sections" className="hidden md:inline-flex items-center gap-2 text-gold-600 font-semibold hover:text-gold-700 transition-colors">
@@ -272,7 +272,7 @@ export default function Home() {
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
           >
-            <h2 className="text-4xl md:text-5xl font-serif font-bold text-white mb-6">Ready to Join The Advocates League?</h2>
+            <h2 className="text-4xl md:text-5xl font-serif font-bold text-white mb-6">Ready to Join The Advocates\\' League?</h2>
             <p className="text-xl text-gray-300 mb-10 max-w-2xl mx-auto">
               Take the next step in your legal education. Connect with peers, participate in events, and build your professional network.
             </p>

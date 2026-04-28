@@ -47,7 +47,7 @@ export default function SubSections() {
           transition={{ delay: 0.2 }}
           className="text-gray-300 max-w-2xl mx-auto px-4 text-lg"
         >
-          Discover the specialized branches of The Advocates League that focus on various aspects of legal education.
+          Discover the specialized branches of The Advocates\\' League that focus on various aspects of legal education.
         </motion.p>
       </div>
 

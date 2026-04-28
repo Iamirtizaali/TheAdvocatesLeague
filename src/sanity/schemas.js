@@ -1,4 +1,4 @@
-// Sanity Schemas for The Advocates League
+// Sanity Schemas for The Advocates\\' League
 // You can use these in your separate Sanity Studio project.
 
 export const siteSettings = {
@@ -31,8 +31,11 @@ export const aboutPage = {
   type: 'document',
   fields: [
     { name: 'aboutText', title: 'About Description', type: 'text' },
+    { name: 'whoWeAre', title: 'Who We Are', type: 'text' },
+    { name: 'coreValues', title: 'Core Values', type: 'array', of: [{ type: 'object', name: 'coreValueItem', fields: [{name: 'title', type: 'string'}, {name: 'description', type: 'text'}] }] },
     { name: 'objectives', title: 'Society Objectives', type: 'array', of: [{ type: 'string' }] },
     { name: 'history', title: 'History', type: 'text' },
+    { name: 'journeyText', title: 'Our Journey', type: 'text' },
   ]
 }
 
@@ -47,6 +50,8 @@ export const teamMember = {
     { name: 'bio', title: 'Bio', type: 'text' },
     { name: 'order', title: 'Order/Rank', type: 'number' },
     { name: 'linkedin', title: 'LinkedIn URL', type: 'url' },
+    { name: 'facebook', title: 'Facebook URL', type: 'url' },
+    { name: 'instagram', title: 'Instagram URL', type: 'url' },
   ],
   orderings: [
     { title: 'Rank', name: 'rankAsc', by: [{ field: 'order', direction: 'asc' }] }
@@ -62,7 +67,7 @@ export const subsection = {
     { name: 'slug', title: 'Slug', type: 'slug', options: { source: 'title' } },
     { name: 'image', title: 'Cover Image', type: 'image' },
     { name: 'description', title: 'Description', type: 'text' },
-    { name: 'content', title: 'Detailed Content', type: 'array', of: [{type: 'block'}] },
+    { name: 'content', title: 'Detailed Content', type: 'array', of: [{type: 'block'}, {type: 'image'}] },
     { name: 'order', title: 'Order', type: 'number' },
   ]
 }
@@ -78,7 +83,8 @@ export const event = {
     { name: 'location', title: 'Location', type: 'string' },
     { name: 'image', title: 'Event Image', type: 'image' },
     { name: 'description', title: 'Short Description', type: 'text' },
-    { name: 'content', title: 'Event Details', type: 'array', of: [{type: 'block'}] },
+    { name: 'content', title: 'Event Details', type: 'array', of: [{type: 'block'}, {type: 'image'}] },
+    { name: 'gallery', title: 'Event Image Gallery', type: 'array', of: [{ type: 'image' }] },
     { name: 'tags', title: 'Tags', type: 'array', of: [{type: 'string'}] },
   ]
 }
@@ -94,7 +100,7 @@ export const blog = {
     { name: 'publishedAt', title: 'Published At', type: 'datetime' },
     { name: 'image', title: 'Cover Image', type: 'image' },
     { name: 'excerpt', title: 'Excerpt', type: 'text' },
-    { name: 'content', title: 'Content', type: 'array', of: [{type: 'block'}] },
+    { name: 'content', title: 'Content', type: 'array', of: [{type: 'block'}, {type: 'image'}] },
     { name: 'category', title: 'Category', type: 'string' },
   ]
 }
@@ -166,6 +172,7 @@ export const contactInfo = {
     { name: 'address', title: 'Physical Address', type: 'text' },
     { name: 'instagram', title: 'Instagram URL', type: 'url' },
     { name: 'linkedin', title: 'LinkedIn URL', type: 'url' },
+    { name: 'facebook', title: 'Facebook URL', type: 'url' },
     { name: 'twitter', title: 'Twitter URL', type: 'url' },
   ]
 }

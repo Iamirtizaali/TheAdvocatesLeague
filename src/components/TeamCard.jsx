@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion'
-import { FaLinkedin } from 'react-icons/fa'
+import { FaLinkedin, FaFacebook, FaInstagram } from 'react-icons/fa'
 import { urlFor } from '../sanity/client'
 
 export default function TeamCard({ member, index }) {
@@ -8,6 +8,8 @@ export default function TeamCard({ member, index }) {
   const bio = member.bio || 'Dedicated to advancing legal discourse.'
   const imageUrl = member.image ? urlFor(member.image).url() : 'https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&q=80&w=400'
   const linkedin = member.linkedin || '#'
+  const facebook = member.facebook || null
+  const instagram = member.instagram || null
 
   return (
     <motion.div
@@ -15,9 +17,9 @@ export default function TeamCard({ member, index }) {
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
       transition={{ duration: 0.5, delay: index * 0.1 }}
-      className="group relative bg-white rounded-xl shadow-md overflow-hidden"
+      className="group relative bg-white rounded-xl shadow-md overflow-hidden max-w-sm mx-auto w-full"
     >
-      <div className="aspect-[3/4] overflow-hidden">
+      <div className="aspect-[4/5] overflow-hidden">
         <img 
           src={imageUrl} 
           alt={name} 
@@ -34,16 +36,38 @@ export default function TeamCard({ member, index }) {
           <p className="text-gray-300 text-sm mb-4 line-clamp-2">
             {bio}
           </p>
-          {linkedin && (
-            <a 
-              href={linkedin} 
-              target="_blank" 
-              rel="noopener noreferrer"
-              className="inline-flex items-center justify-center p-2 rounded-full bg-navy-800 hover:bg-gold-600 transition-colors"
-            >
-              <FaLinkedin size={18} />
-            </a>
-          )}
+          <div className="flex gap-2">
+            {linkedin && (
+              <a 
+                href={linkedin} 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="inline-flex items-center justify-center p-2 rounded-full bg-navy-800 hover:bg-gold-600 transition-colors"
+              >
+                <FaLinkedin size={18} />
+              </a>
+            )}
+            {facebook && (
+              <a 
+                href={facebook} 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="inline-flex items-center justify-center p-2 rounded-full bg-navy-800 hover:bg-gold-600 transition-colors"
+              >
+                <FaFacebook size={18} />
+              </a>
+            )}
+            {instagram && (
+              <a 
+                href={instagram} 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="inline-flex items-center justify-center p-2 rounded-full bg-navy-800 hover:bg-gold-600 transition-colors"
+              >
+                <FaInstagram size={18} />
+              </a>
+            )}
+          </div>
         </div>
       </div>
     </motion.div>
