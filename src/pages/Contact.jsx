@@ -1,7 +1,25 @@
+import { useEffect, useState } from 'react'
 import { motion } from 'framer-motion'
 import { Mail, Phone, MapPin, Send } from 'lucide-react'
+import { client } from '../sanity/client'
+import { CONTACT_INFO_QUERY } from '../sanity/queries'
 
 export default function Contact() {
+  const [contact, setContact] = useState(null)
+
+  useEffect(() => {
+    client.fetch(CONTACT_INFO_QUERY)
+      .then((data) => {
+        if (data) setContact(data)
+      })
+      .catch(console.error)
+  }, [])
+
+  const info = contact || {
+    address: 'University Law College University of The Punjab Lahore',
+    phone: '03215211478',
+    email: 'theadvocatesleaguepu@gmail.com'
+  }
   return (
     <div className="bg-subtle min-h-screen pb-24">
       <div className="bg-navy-900 py-20 text-center text-white">
@@ -42,7 +60,7 @@ export default function Contact() {
                 </div>
                 <div>
                   <h3 className="font-bold text-navy-900 text-lg">Address</h3>
-                  <p className="text-gray-600">123 Law University Campus, Legal Avenue, City, State ZIP</p>
+                  <p className="text-gray-600">{info.address}</p>
                 </div>
               </div>
               
@@ -52,7 +70,7 @@ export default function Contact() {
                 </div>
                 <div>
                   <h3 className="font-bold text-navy-900 text-lg">Phone</h3>
-                  <p className="text-gray-600">+1 (555) 123-4567</p>
+                  <p className="text-gray-600">{info.phone}</p>
                 </div>
               </div>
               
@@ -62,7 +80,7 @@ export default function Contact() {
                 </div>
                 <div>
                   <h3 className="font-bold text-navy-900 text-lg">Email</h3>
-                  <p className="text-gray-600">contact@advocatesleague.com</p>
+                  <p className="text-gray-600">{info.email}</p>
                 </div>
               </div>
             </div>

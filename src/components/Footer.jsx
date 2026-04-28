@@ -15,9 +15,9 @@ export default function Footer() {
   }, [])
 
   const info = contact || {
-    address: '123 Law University Campus, Legal Avenue, City, State ZIP',
-    phone: '+1 (555) 123-4567',
-    email: 'contact@advocatesleague.com',
+    address: 'University Law College University of The Punjab Lahore',
+    phone: '03215211478',
+    email: 'theadvocatesleaguepu@gmail.com',
     instagram: '#',
     linkedin: '#',
     twitter: '#',
