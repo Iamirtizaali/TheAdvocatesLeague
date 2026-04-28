@@ -85,7 +85,7 @@ export default function SubSectionDetail() {
             ) : (
               <div>
                 <h2>Welcome to {section.title}</h2>
-                <p>This division of The Advocates\\' League is dedicated to specialized aspects of legal development. We organize focused workshops, seminars, and networking sessions.</p>
+                <p>This division of The Advocates' League is dedicated to specialized aspects of legal development. We organize focused workshops, seminars, and networking sessions.</p>
                 <p>Content will be updated soon from the CMS.</p>
               </div>
             )}

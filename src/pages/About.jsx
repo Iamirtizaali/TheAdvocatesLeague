@@ -15,7 +15,7 @@ export default function About() {
   }, [])
 
   const content = data || {
-    aboutText: "The Advocates\\' League is a premier student-run organization dedicated to advancing legal discourse, advocacy skills, and professional development among aspiring law professionals. Established with a vision to bridge the gap between academic learning and practical application, we strive to create a vibrant platform for comprehensive legal education.",
+    aboutText: "The Advocates' League is a premier student-run organization dedicated to advancing legal discourse, advocacy skills, and professional development among aspiring law professionals. Established with a vision to bridge the gap between academic learning and practical application, we strive to create a vibrant platform for comprehensive legal education.",
     whoWeAre: "We are a diverse group of passionate individuals united by a shared commitment to excellence in the legal profession.",
     coreValues: [
       { title: 'Mission-Driven', description: 'Focused on impact.' },
@@ -29,7 +29,7 @@ export default function About() {
       "To provide networking opportunities with distinguished legal professionals.",
       "To promote awareness about contemporary socio-legal issues."
     ],
-    history: "Founded in 2018, The Advocates\\' League began as a small study circle and has grown into a robust organization with multiple specialized divisions, impacting hundreds of students annually.",
+    history: "Founded in 2018, The Advocates' League began as a small study circle and has grown into a robust organization with multiple specialized divisions, impacting hundreds of students annually.",
     journeyText: "These pillars guide all our initiatives, events, and programs throughout the academic year."
   }
 
@@ -50,7 +50,7 @@ export default function About() {
           transition={{ delay: 0.2 }}
           className="text-gray-300 max-w-2xl mx-auto px-4 text-lg"
         >
-          Discover our mission, vision, and the core values that drive The Advocates\\' League forward.
+          Discover our mission, vision, and the core values that drive The Advocates' League forward.
         </motion.p>
       </div>
 

@@ -32,10 +32,10 @@ export default function Footer() {
           {/* Brand */}
           <div className="space-y-4">
             <Link to="/" className="flex items-center gap-2 group">
-              <div className="p-1.5 rounded bg-gold-500 text-navy-900">
-                <Scale size={20} />
+              <div>
+                <img src="/logo.png" alt="Logo" className="w-8 h-8" />
               </div>
-              <span className="font-serif font-bold tracking-wide text-xl">The Advocates\\' League</span>
+              <span className="font-serif font-bold tracking-wide text-xl">The Advocates' League</span>
             </Link>
             <p className="text-gray-400 text-sm leading-relaxed mt-4">
               A premier law college society dedicated to nurturing legal minds, fostering dialogue, and building the next generation of legal professionals.
@@ -100,7 +100,7 @@ export default function Footer() {
         {/* Bottom */}
         <div className="flex flex-col md:flex-row justify-between items-center gap-4">
           <p className="text-gray-400 text-sm text-center md:text-left">
-            &copy; {new Date().getFullYear()} The Advocates\\' League. All rights reserved.
+            &copy; {new Date().getFullYear()} The Advocates' League. All rights reserved.
           </p>
           <div className="flex gap-4">
             {info.instagram && (

@@ -1,4 +1,4 @@
-// Sanity Schemas for The Advocates\\' League
+// Sanity Schemas for The Advocates' League
 // You can use these in your separate Sanity Studio project.
 
 export const siteSettings = {

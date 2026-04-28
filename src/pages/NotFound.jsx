@@ -11,7 +11,7 @@ export default function NotFound() {
         transition={{ duration: 0.5 }}
       >
         <div className="w-24 h-24 bg-navy-50 rounded-full flex items-center justify-center mx-auto mb-8 text-gold-600">
-          <Scale size={48} />
+          <img src="/logo.png" alt="Logo" className="w-16 h-16 opacity-50" />
         </div>
         <h1 className="text-6xl font-serif font-bold text-navy-900 mb-4">404</h1>
         <h2 className="text-2xl font-bold text-gray-800 mb-6">Page Not Found</h2>
