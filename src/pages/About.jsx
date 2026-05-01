@@ -39,7 +39,7 @@ export default function About() {
       <SEO 
         title="About Us | The Advocates' League"
         description="Discover the mission, vision, and core values that drive The Advocates' League, a premier student-run legal organization."
-        url="https://theadvocatesleague.in/about"
+        url="https://theadvocatesleague.com/about"
       />
       {/* Header */}
       <div className="bg-navy-900 py-20 text-center text-white">

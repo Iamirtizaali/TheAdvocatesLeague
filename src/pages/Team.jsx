@@ -46,7 +46,7 @@ export default function Team() {
       <SEO 
         title="Our Team | The Advocates' League"
         description="Meet the dedicated executive team and members leading The Advocates' League."
-        url="https://theadvocatesleague.in/team"
+        url="https://theadvocatesleague.com/team"
       />
       {/* Header */}
       <div className="bg-navy-900 py-20 text-center text-white">

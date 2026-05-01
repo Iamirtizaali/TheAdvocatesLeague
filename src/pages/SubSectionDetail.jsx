@@ -66,7 +66,7 @@ export default function SubSectionDetail() {
         title={`${section.title} | The Advocates' League`}
         description={section.description || `Learn more about the ${section.title} division.`}
         image={imageUrl}
-        url={`https://theadvocatesleague.in/section/${slug}`}
+        url={`https://theadvocatesleague.com/section/${slug}`}
       />
       <div className="relative h-[40vh] min-h-[300px]">
         <img src={imageUrl} alt={section.title} className="w-full h-full object-cover" />

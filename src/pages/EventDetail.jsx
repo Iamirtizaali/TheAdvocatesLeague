@@ -72,7 +72,7 @@ export default function EventDetail() {
         title={`${event.title} | Events | The Advocates' League`}
         description={event.description || `Join us for ${event.title} at ${event.location}.`}
         image={imageUrl}
-        url={`https://theadvocatesleague.in/event/${slug}`}
+        url={`https://theadvocatesleague.com/event/${slug}`}
       />
       <div className="relative h-[50vh] min-h-[400px]">
         <img src={imageUrl} alt={event.title} className="w-full h-full object-cover" />

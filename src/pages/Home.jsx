@@ -94,7 +94,7 @@ export default function Home() {
       <SEO 
         title="Home | The Advocates' League | Law & Advocacy Society" 
         description="The Advocates' League (or Advocate League) is a premier student-run law league dedicated to advancing legal discourse, advocacy skills, and professional development."
-        url="https://theadvocatesleague.in"
+        url="https://theadvocatesleague.com"
         keywords="Advocates League, Advocate League, Law League, Legal Society, Law Students, Legal Community, Advocates"
       />
       {/* Hero Section */}

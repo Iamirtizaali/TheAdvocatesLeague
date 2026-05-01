@@ -37,7 +37,7 @@ export default function SubSections() {
       <SEO 
         title="Our Divisions | The Advocates' League"
         description="Explore the various divisions and sub-sections within The Advocates' League."
-        url="https://theadvocatesleague.in/sections"
+        url="https://theadvocatesleague.com/sections"
       />
       <div className="bg-navy-900 py-20 text-center text-white">
         <motion.h1 

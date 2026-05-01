@@ -39,7 +39,7 @@ export default function Blogs() {
       <SEO 
         title="Blogs & Insights | The Advocates' League"
         description="Read articles, insights, and research published by members of The Advocates' League covering various fields of law."
-        url="https://theadvocatesleague.in/blogs"
+        url="https://theadvocatesleague.com/blogs"
       />
       <div className="bg-navy-900 py-20 text-center text-white">
         <motion.h1 

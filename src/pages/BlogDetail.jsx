@@ -73,7 +73,7 @@ export default function BlogDetail() {
         title={`${blog.title} | Blog | The Advocates' League`}
         description={blog.excerpt || `Read ${blog.title} on The Advocates' League blog.`}
         image={imageUrl}
-        url={`https://theadvocatesleague.in/blog/${slug}`}
+        url={`https://theadvocatesleague.com/blog/${slug}`}
       />
       <div className="container mx-auto px-4 lg:px-8 pt-12">
         <Link to="/blogs" className="inline-flex items-center gap-2 text-navy-600 hover:text-gold-600 transition-colors mb-8 font-medium">

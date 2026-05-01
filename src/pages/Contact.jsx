@@ -26,7 +26,7 @@ export default function Contact() {
       <SEO 
         title="Contact Us | The Advocates' League"
         description="Get in touch with The Advocates' League. We'd love to hear from you."
-        url="https://theadvocatesleague.in/contact"
+        url="https://theadvocatesleague.com/contact"
       />
       <div className="bg-navy-900 py-20 text-center text-white">
         <motion.h1 

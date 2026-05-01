@@ -42,7 +42,7 @@ export default function Events() {
       <SEO 
         title="Events | The Advocates' League"
         description="Discover upcoming and past events, moot courts, workshops, and seminars hosted by The Advocates' League."
-        url="https://theadvocatesleague.in/events"
+        url="https://theadvocatesleague.com/events"
       />
       {/* Header */}
       <div className="bg-navy-900 py-20 text-center text-white">
