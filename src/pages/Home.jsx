@@ -92,9 +92,10 @@ export default function Home() {
   return (
     <div className="overflow-hidden">
       <SEO 
-        title="Home | The Advocates' League" 
-        description="The Advocates' League is a premier student-run organization dedicated to advancing legal discourse, advocacy skills, and professional development."
+        title="Home | The Advocates' League | Law & Advocacy Society" 
+        description="The Advocates' League (or Advocate League) is a premier student-run law league dedicated to advancing legal discourse, advocacy skills, and professional development."
         url="https://theadvocatesleague.in"
+        keywords="Advocates League, Advocate League, Law League, Legal Society, Law Students, Legal Community, Advocates"
       />
       {/* Hero Section */}
       <section className="relative min-h-[100svh] py-24 md:py-32 flex items-center">
