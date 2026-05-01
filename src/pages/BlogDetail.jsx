@@ -57,7 +57,7 @@ export default function BlogDetail() {
         }
         return (
           <img
-            alt={value.alt || ' '}
+            alt={value.alt || 'Blog Content Image'}
             loading="lazy"
             src={urlFor(value).width(800).fit('max').auto('format').url()}
             className="rounded-lg shadow-md my-8 mx-auto"

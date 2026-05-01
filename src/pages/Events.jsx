@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react'
 import { motion } from 'framer-motion'
 import EventCard from '../components/EventCard'
 import SectionTitle from '../components/SectionTitle'
+import SEO from '../components/SEO'
 import { client } from '../sanity/client'
 import { EVENTS_QUERY } from '../sanity/queries'
 
@@ -38,6 +39,11 @@ export default function Events() {
 
   return (
     <div className="bg-subtle min-h-screen pb-24">
+      <SEO 
+        title="Events | The Advocates' League"
+        description="Discover upcoming and past events, moot courts, workshops, and seminars hosted by The Advocates' League."
+        url="https://theadvocatesleague.in/events"
+      />
       {/* Header */}
       <div className="bg-navy-900 py-20 text-center text-white">
         <motion.h1 

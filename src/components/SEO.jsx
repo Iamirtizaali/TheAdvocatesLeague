@@ -7,6 +7,7 @@ const SEO = ({ title, description, image, url }) => {
       {/* Standard metadata tags */}
       {title && <title>{title}</title>}
       {description && <meta name="description" content={description} />}
+      {url && <link rel="canonical" href={url} />}
 
       {/* Open Graph / Facebook */}
       <meta property="og:type" content="website" />

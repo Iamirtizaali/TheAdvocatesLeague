@@ -50,7 +50,7 @@ export default function SubSectionDetail() {
         }
         return (
           <img
-            alt={value.alt || ' '}
+            alt={value.alt || 'Division Detail Image'}
             loading="lazy"
             src={urlFor(value).width(800).fit('max').auto('format').url()}
             className="rounded-lg shadow-md my-8 mx-auto"
