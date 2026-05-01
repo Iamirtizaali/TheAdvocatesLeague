@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react'
 import { motion } from 'framer-motion'
 import SubSectionCard from '../components/SubSectionCard'
 import SectionTitle from '../components/SectionTitle'
+import SEO from '../components/SEO'
 import { client } from '../sanity/client'
 import { SUBSECTIONS_QUERY } from '../sanity/queries'
 
@@ -33,6 +34,11 @@ export default function SubSections() {
 
   return (
     <div className="bg-subtle min-h-screen pb-24">
+      <SEO 
+        title="Our Divisions | The Advocates' League"
+        description="Explore the various divisions and sub-sections within The Advocates' League."
+        url="https://theadvocatesleague.in/sections"
+      />
       <div className="bg-navy-900 py-20 text-center text-white">
         <motion.h1 
           initial={{ opacity: 0, y: -20 }}

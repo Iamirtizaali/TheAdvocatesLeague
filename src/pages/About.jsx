@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react'
 import { motion } from 'framer-motion'
 import { Target, Lightbulb, Shield, Award } from 'lucide-react'
 import SectionTitle from '../components/SectionTitle'
+import SEO from '../components/SEO'
 import { client } from '../sanity/client'
 import { ABOUT_QUERY } from '../sanity/queries'
 
@@ -35,6 +36,11 @@ export default function About() {
 
   return (
     <div className="bg-subtle pb-24">
+      <SEO 
+        title="About Us | The Advocates' League"
+        description="Discover the mission, vision, and core values that drive The Advocates' League, a premier student-run legal organization."
+        url="https://theadvocatesleague.in/about"
+      />
       {/* Header */}
       <div className="bg-navy-900 py-20 text-center text-white">
         <motion.h1 

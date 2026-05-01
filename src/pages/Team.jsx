@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react'
 import { motion } from 'framer-motion'
 import TeamCard from '../components/TeamCard'
+import SEO from '../components/SEO'
 import { client } from '../sanity/client'
 import { TEAM_MEMBERS_QUERY } from '../sanity/queries'
 
@@ -42,6 +43,11 @@ export default function Team() {
 
   return (
     <div className="bg-subtle min-h-screen pb-24">
+      <SEO 
+        title="Our Team | The Advocates' League"
+        description="Meet the dedicated executive team and members leading The Advocates' League."
+        url="https://theadvocatesleague.in/team"
+      />
       {/* Header */}
       <div className="bg-navy-900 py-20 text-center text-white">
         <motion.h1
