@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react'
 import { useParams, Link } from 'react-router-dom'
 import { ArrowLeft } from 'lucide-react'
+import SEO from '../components/SEO'
 import { client, urlFor } from '../sanity/client'
 import { SUBSECTION_BY_SLUG_QUERY } from '../sanity/queries'
 import { PortableText } from '@portabletext/react'
@@ -61,6 +62,12 @@ export default function SubSectionDetail() {
 
   return (
     <div className="bg-subtle min-h-screen pb-24">
+      <SEO 
+        title={`${section.title} | The Advocates' League`}
+        description={section.description || `Learn more about the ${section.title} division.`}
+        image={imageUrl}
+        url={`https://theadvocatesleague.in/section/${slug}`}
+      />
       <div className="relative h-[40vh] min-h-[300px]">
         <img src={imageUrl} alt={section.title} className="w-full h-full object-cover" />
         <div className="absolute inset-0 bg-navy-900/70" />

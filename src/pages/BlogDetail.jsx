@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react'
 import { useParams, Link } from 'react-router-dom'
 import { Clock, ArrowLeft, User } from 'lucide-react'
+import SEO from '../components/SEO'
 import { client, urlFor } from '../sanity/client'
 import { BLOG_BY_SLUG_QUERY } from '../sanity/queries'
 import { PortableText } from '@portabletext/react'
@@ -68,6 +69,12 @@ export default function BlogDetail() {
 
   return (
     <div className="bg-subtle min-h-screen pb-24">
+      <SEO 
+        title={`${blog.title} | Blog | The Advocates' League`}
+        description={blog.excerpt || `Read ${blog.title} on The Advocates' League blog.`}
+        image={imageUrl}
+        url={`https://theadvocatesleague.in/blog/${slug}`}
+      />
       <div className="container mx-auto px-4 lg:px-8 pt-12">
         <Link to="/blogs" className="inline-flex items-center gap-2 text-navy-600 hover:text-gold-600 transition-colors mb-8 font-medium">
           <ArrowLeft size={20} /> Back to Blogs
