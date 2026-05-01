@@ -11,7 +11,7 @@ const client = createClient({
 });
 
 async function generateSitemap() {
-  const baseUrl = 'https://theadvocatesleague.in';
+  const baseUrl = 'https://theadvocatesleague.com';
   
   try {
     console.log('Fetching slugs from Sanity to generate sitemap...');
