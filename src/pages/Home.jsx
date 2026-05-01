@@ -6,6 +6,7 @@ import SectionTitle from '../components/SectionTitle'
 import EventCard from '../components/EventCard'
 import BlogCard from '../components/BlogCard'
 import SubSectionCard from '../components/SubSectionCard'
+import SEO from '../components/SEO'
 import { client, urlFor } from '../sanity/client'
 import { HOME_QUERY, EVENTS_QUERY, BLOGS_QUERY, SUBSECTIONS_QUERY } from '../sanity/queries'
 
@@ -90,6 +91,11 @@ export default function Home() {
 
   return (
     <div className="overflow-hidden">
+      <SEO 
+        title="Home | The Advocates' League" 
+        description="The Advocates' League is a premier student-run organization dedicated to advancing legal discourse, advocacy skills, and professional development."
+        url="https://theadvocatesleague.in"
+      />
       {/* Hero Section */}
       <section className="relative min-h-[100svh] py-24 md:py-32 flex items-center">
         <div className="absolute inset-0 z-0 overflow-hidden">

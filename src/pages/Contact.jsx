@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react'
 import { motion } from 'framer-motion'
 import { Mail, Phone, MapPin, Send } from 'lucide-react'
+import SEO from '../components/SEO'
 import { client } from '../sanity/client'
 import { CONTACT_INFO_QUERY } from '../sanity/queries'
 
@@ -22,6 +23,11 @@ export default function Contact() {
   }
   return (
     <div className="bg-subtle min-h-screen pb-24">
+      <SEO 
+        title="Contact Us | The Advocates' League"
+        description="Get in touch with The Advocates' League. We'd love to hear from you."
+        url="https://theadvocatesleague.in/contact"
+      />
       <div className="bg-navy-900 py-20 text-center text-white">
         <motion.h1 
           initial={{ opacity: 0, y: -20 }}

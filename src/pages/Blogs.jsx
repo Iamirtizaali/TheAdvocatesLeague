@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react'
 import { motion } from 'framer-motion'
 import BlogCard from '../components/BlogCard'
 import SectionTitle from '../components/SectionTitle'
+import SEO from '../components/SEO'
 import { client } from '../sanity/client'
 import { BLOGS_QUERY } from '../sanity/queries'
 
@@ -35,6 +36,11 @@ export default function Blogs() {
 
   return (
     <div className="bg-subtle min-h-screen pb-24">
+      <SEO 
+        title="Blogs & Insights | The Advocates' League"
+        description="Read articles, insights, and research published by members of The Advocates' League covering various fields of law."
+        url="https://theadvocatesleague.in/blogs"
+      />
       <div className="bg-navy-900 py-20 text-center text-white">
         <motion.h1 
           initial={{ opacity: 0, y: -20 }}

@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react'
 import { useParams, Link } from 'react-router-dom'
 import { motion } from 'framer-motion'
 import { Calendar, MapPin, ArrowLeft } from 'lucide-react'
+import SEO from '../components/SEO'
 import { client, urlFor } from '../sanity/client'
 import { EVENT_BY_SLUG_QUERY } from '../sanity/queries'
 import { PortableText } from '@portabletext/react'
@@ -55,7 +56,7 @@ export default function EventDetail() {
         }
         return (
           <img
-            alt={value.alt || ' '}
+            alt={value.alt || 'Event Detail Image'}
             loading="lazy"
             src={urlFor(value).width(800).fit('max').auto('format').url()}
             className="rounded-lg shadow-md my-8 mx-auto"
@@ -67,6 +68,12 @@ export default function EventDetail() {
 
   return (
     <div className="bg-subtle min-h-screen pb-24">
+      <SEO 
+        title={`${event.title} | Events | The Advocates' League`}
+        description={event.description || `Join us for ${event.title} at ${event.location}.`}
+        image={imageUrl}
+        url={`https://theadvocatesleague.in/event/${slug}`}
+      />
       <div className="relative h-[50vh] min-h-[400px]">
         <img src={imageUrl} alt={event.title} className="w-full h-full object-cover" />
         <div className="absolute inset-0 bg-navy-900/60" />
