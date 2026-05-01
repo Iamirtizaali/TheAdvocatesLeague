@@ -1,12 +1,13 @@
 import React from 'react';
 import { Helmet } from 'react-helmet-async';
 
-const SEO = ({ title, description, image, url }) => {
+const SEO = ({ title, description, image, url, keywords }) => {
   return (
     <Helmet>
       {/* Standard metadata tags */}
       {title && <title>{title}</title>}
       {description && <meta name="description" content={description} />}
+      {keywords && <meta name="keywords" content={keywords} />}
       {url && <link rel="canonical" href={url} />}
 
       {/* Open Graph / Facebook */}
