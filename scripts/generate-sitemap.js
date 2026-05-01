@@ -45,16 +45,17 @@ async function generateSitemap() {
     ];
     
     // Create sitemap XML
-    const sitemap = `<?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  // Create sitemap XML
+  const sitemap = `<?xml version="1.0" encoding="UTF-8"?>
+  <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   ${urls.map(url => `
   <url>
-    <loc>${url}</url>
+    <loc>${url}</loc> 
     <lastmod>${new Date().toISOString()}</lastmod>
     <changefreq>weekly</changefreq>
     <priority>${url === baseUrl ? '1.0' : '0.8'}</priority>
   </url>`).join('')}
-</urlset>`;
+  </urlset>`;
 
     // Make sure public directory exists
     const publicDir = './public';
