@@ -29,7 +29,7 @@ export default function TeamCard({ member, index }) {
       </div>
       
       <div className="absolute bottom-0 left-0 w-full p-6 text-white transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300">
-        <h3 className="font-serif font-bold text-2xl mb-1">{name}</h3>
+        <h3 className="font-serif font-bold text-white text-2xl mb-1">{name}</h3>
         <p className="text-gold-500 font-medium text-sm mb-3 uppercase tracking-wider">{role}</p>
         
         <div className="opacity-0 group-hover:opacity-100 transition-opacity duration-300 delay-100">
