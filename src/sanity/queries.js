@@ -13,3 +13,4 @@ export const CONTACT_INFO_QUERY = `*[_type == "contactInfo"][0]`
 export const FAQ_QUERY = `*[_type == "faq"]`
 export const TESTIMONIALS_QUERY = `*[_type == "testimonial"]`
 export const ANNOUNCEMENTS_QUERY = `*[_type == "announcement" && active == true]`
+export const TEAM_MEMBER_BY_SLUG_QUERY = `*[_type == "teamMember" && slug.current == $slug][0]`

@@ -1,4 +1,5 @@
 import { motion } from 'framer-motion'
+import { Link } from 'react-router-dom'
 import { FaLinkedin, FaFacebook, FaInstagram } from 'react-icons/fa'
 import { urlFor } from '../sanity/client'
 
@@ -19,6 +20,7 @@ export default function TeamCard({ member, index }) {
       transition={{ duration: 0.5, delay: index * 0.1 }}
       className="group relative bg-white rounded-xl shadow-md overflow-hidden max-w-[280px] mx-auto w-full"
     >
+      <Link to={`/team/${member.slug?.current || ''}`} className="absolute inset-0 z-10" aria-label={`View ${name}'s profile`} />
       <div className="aspect-[4/5] overflow-hidden">
         <img 
           src={imageUrl} 
@@ -44,7 +46,7 @@ export default function TeamCard({ member, index }) {
                     href={linkedin} 
                     target="_blank" 
                     rel="noopener noreferrer"
-                    className="inline-flex items-center justify-center p-2 rounded-full bg-navy-800 hover:bg-gold-600 transition-colors"
+                    className="relative z-20 inline-flex items-center justify-center p-2 rounded-full bg-navy-800 hover:bg-gold-600 transition-colors"
                   >
                     <FaLinkedin size={18} />
                   </a>
@@ -54,7 +56,7 @@ export default function TeamCard({ member, index }) {
                     href={facebook} 
                     target="_blank" 
                     rel="noopener noreferrer"
-                    className="inline-flex items-center justify-center p-2 rounded-full bg-navy-800 hover:bg-gold-600 transition-colors"
+                    className="relative z-20 inline-flex items-center justify-center p-2 rounded-full bg-navy-800 hover:bg-gold-600 transition-colors"
                   >
                     <FaFacebook size={18} />
                   </a>
@@ -64,7 +66,7 @@ export default function TeamCard({ member, index }) {
                     href={instagram} 
                     target="_blank" 
                     rel="noopener noreferrer"
-                    className="inline-flex items-center justify-center p-2 rounded-full bg-navy-800 hover:bg-gold-600 transition-colors"
+                    className="relative z-20 inline-flex items-center justify-center p-2 rounded-full bg-navy-800 hover:bg-gold-600 transition-colors"
                   >
                     <FaInstagram size={18} />
                   </a>
