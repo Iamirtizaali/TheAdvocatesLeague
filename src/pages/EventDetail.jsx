@@ -121,7 +121,7 @@ export default function EventDetail() {
                     <img 
                       src={urlFor(img).width(600).height(600).fit('crop').url()} 
                       alt={`Gallery image ${idx + 1}`}
-                      className="w-full h-full object-cover hover:scale-110 transition-transform duration-500 cursor-pointer"
+                      className="w-full h-full object-cover cursor-pointer"
                     />
                   </div>
                 ))}

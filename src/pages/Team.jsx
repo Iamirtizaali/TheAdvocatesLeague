@@ -73,7 +73,7 @@ export default function Team() {
             <div className="w-12 h-12 border-4 border-navy-900 border-t-gold-500 rounded-full animate-spin"></div>
           </div>
         ) : (
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 gap-y-12 max-w-7xl mx-auto">
+          <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 sm:gap-6 gap-y-8 sm:gap-y-12 max-w-7xl mx-auto">
             {team.map((member, index) => (
               <TeamCard key={index} member={member} index={index} />
             ))}

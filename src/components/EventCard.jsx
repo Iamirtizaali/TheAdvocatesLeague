@@ -27,7 +27,7 @@ export default function EventCard({ event, index }) {
         <img 
           src={imageUrl} 
           alt={title} 
-          className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+          className="w-full h-full object-cover"
         />
         <div className="absolute top-4 left-4 z-20 bg-gold-500 text-navy-900 text-xs font-bold px-3 py-1.5 rounded uppercase tracking-wider shadow-md">
           {date.toLocaleDateString(undefined, { month: 'short', day: 'numeric' })}
