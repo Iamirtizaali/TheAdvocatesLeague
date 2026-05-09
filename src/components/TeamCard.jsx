@@ -7,7 +7,7 @@ export default function TeamCard({ member, index }) {
   const role = member.role || 'President'
   const bio = member.bio || 'Dedicated to advancing legal discourse.'
   const imageUrl = member.image ? urlFor(member.image).url() : 'https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&q=80&w=400'
-  const linkedin = member.linkedin || '#'
+  const linkedin = member.linkedin || null
   const facebook = member.facebook || null
   const instagram = member.instagram || null
 
@@ -17,7 +17,7 @@ export default function TeamCard({ member, index }) {
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
       transition={{ duration: 0.5, delay: index * 0.1 }}
-      className="group relative bg-white rounded-xl shadow-md overflow-hidden max-w-sm mx-auto w-full"
+      className="group relative bg-white rounded-xl shadow-md overflow-hidden max-w-[280px] mx-auto w-full"
     >
       <div className="aspect-[4/5] overflow-hidden">
         <img 
