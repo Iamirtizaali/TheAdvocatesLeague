@@ -115,13 +115,13 @@ export default function EventDetail() {
           {event.gallery && event.gallery.length > 0 && (
             <div className="mt-16 border-t border-gray-100 pt-12">
               <h2 className="text-3xl font-serif font-bold text-navy-900 mb-8 text-center">Event Gallery</h2>
-              <div className="columns-1 sm:columns-2 md:columns-3 gap-6 space-y-6">
+              <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
                 {event.gallery.map((img, idx) => (
-                  <div key={idx} className="break-inside-avoid overflow-hidden rounded-xl shadow-sm">
+                  <div key={idx} className="overflow-hidden rounded-xl shadow-sm aspect-square">
                     <img 
-                      src={urlFor(img).width(800).auto('format').url()} 
+                      src={urlFor(img).width(800).height(800).fit('crop').auto('format').url()} 
                       alt={`Gallery image ${idx + 1}`}
-                      className="w-full h-auto cursor-pointer"
+                      className="w-full h-full object-cover cursor-pointer hover:scale-105 transition-transform duration-300"
                     />
                   </div>
                 ))}
