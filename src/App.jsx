@@ -5,8 +5,9 @@ import Home from './pages/Home'
 import About from './pages/About'
 import Team from './pages/Team'
 import TeamMemberDetail from './pages/TeamMemberDetail'
-import SubSections from './pages/SubSections'
-import SubSectionDetail from './pages/SubSectionDetail'
+import Chapters from './pages/Chapters'
+import ChapterDetail from './pages/ChapterDetail'
+import CampusDetail from './pages/CampusDetail'
 import Events from './pages/Events'
 import EventDetail from './pages/EventDetail'
 import Blogs from './pages/Blogs'
@@ -27,8 +28,9 @@ function App() {
           <Route path="/about" element={<About />} />
           <Route path="/team" element={<Team />} />
           <Route path="/team/:slug" element={<TeamMemberDetail />} />
-          <Route path="/sections" element={<SubSections />} />
-          <Route path="/sections/:slug" element={<SubSectionDetail />} />
+          <Route path="/chapters" element={<Chapters />} />
+          <Route path="/chapters/:slug" element={<ChapterDetail />} />
+          <Route path="/campuses/:slug" element={<CampusDetail />} />
           <Route path="/events" element={<Events />} />
           <Route path="/events/:slug" element={<EventDetail />} />
           <Route path="/blogs" element={<Blogs />} />

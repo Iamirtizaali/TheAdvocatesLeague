@@ -5,17 +5,17 @@ import { ArrowRight, Scale, Users, Calendar, BookOpen } from 'lucide-react'
 import SectionTitle from '../components/SectionTitle'
 import EventCard from '../components/EventCard'
 import BlogCard from '../components/BlogCard'
-import SubSectionCard from '../components/SubSectionCard'
+import ChapterCard from '../components/ChapterCard'
 import SEO from '../components/SEO'
 import { client, urlFor } from '../sanity/client'
-import { HOME_QUERY, EVENTS_QUERY, BLOGS_QUERY, SUBSECTIONS_QUERY } from '../sanity/queries'
+import { HOME_QUERY, EVENTS_QUERY, BLOGS_QUERY, CHAPTERS_QUERY } from '../sanity/queries'
 
 export default function Home() {
   const [data, setData] = useState({
     home: null,
     events: [],
     blogs: [],
-    sections: []
+    chapters: []
   })
   const [loading, setLoading] = useState(true)
   const [currentSlide, setCurrentSlide] = useState(0)
@@ -33,11 +33,11 @@ export default function Home() {
   useEffect(() => {
     async function fetchData() {
       try {
-        const [homeData, eventsData, blogsData, sectionsData] = await Promise.all([
+        const [homeData, eventsData, blogsData, chaptersData] = await Promise.all([
           client.fetch(HOME_QUERY),
           client.fetch(EVENTS_QUERY),
           client.fetch(BLOGS_QUERY),
-          client.fetch(SUBSECTIONS_QUERY)
+          client.fetch(CHAPTERS_QUERY)
         ])
 
         setData({
@@ -48,7 +48,7 @@ export default function Home() {
           },
           events: eventsData && eventsData.length > 0 ? eventsData.slice(0, 3) : [{}, {}, {}],
           blogs: blogsData && blogsData.length > 0 ? blogsData.slice(0, 3) : [{}, {}, {}],
-          sections: sectionsData && sectionsData.length > 0 ? sectionsData.slice(0, 3) : [{}, {}, {}]
+          chapters: chaptersData && chaptersData.length > 0 ? chaptersData.slice(0, 3) : [{}, {}, {}]
         })
       } catch (error) {
         console.error("Error fetching data:", error)
@@ -61,7 +61,7 @@ export default function Home() {
           },
           events: [{}, {}, {}],
           blogs: [{}, {}, {}],
-          sections: [{ title: 'PULC' }, { title: 'Chapter' }, { title: 'Embassy Drive' }]
+          chapters: [{ title: 'Lahore Chapter' }, { title: 'Sahiwal Chapter' }, { title: 'Ambassadors Program' }]
         })
       } finally {
         setLoading(false)
@@ -79,7 +79,7 @@ export default function Home() {
     )
   }
 
-  const { home, events, blogs, sections } = data
+  const { home, events, blogs, chapters } = data
   const defaultImages = [
     'https://images.unsplash.com/photo-1589829085413-56de8ae18c73?auto=format&fit=crop&q=80&w=1920',
     'https://images.unsplash.com/photo-1450101499163-c8848c66ca85?auto=format&fit=crop&q=80&w=1920',
@@ -195,29 +195,29 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Subsections Showcase */}
+      {/* Chapters Showcase */}
       <section className="py-24 bg-subtle">
         <div className="container mx-auto px-4 lg:px-8">
           <div className="flex flex-col md:flex-row justify-between items-end mb-12">
             <SectionTitle
-              title="Our Divisions"
-              subtitle="The Advocates' League operates through specialized divisions to maximize our impact."
+              title="Our Chapters"
+              subtitle="The Advocates' League operates through specialized chapters and campuses to maximize our impact."
               className="text-left mb-0"
             />
-            <Link to="/sections" className="hidden md:inline-flex items-center gap-2 text-gold-600 font-semibold hover:text-gold-700 transition-colors">
-              View All Divisions <ArrowRight size={20} />
+            <Link to="/chapters" className="hidden md:inline-flex items-center gap-2 text-gold-600 font-semibold hover:text-gold-700 transition-colors">
+              View All Chapters <ArrowRight size={20} />
             </Link>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {sections.map((section, index) => (
-              <SubSectionCard key={index} section={section} index={index} />
+            {chapters.map((chapter, index) => (
+              <ChapterCard key={index} chapter={chapter} index={index} />
             ))}
           </div>
 
           <div className="mt-10 text-center md:hidden">
-            <Link to="/sections" className="inline-flex items-center gap-2 text-gold-600 font-semibold hover:text-gold-700 transition-colors">
-              View All Divisions <ArrowRight size={20} />
+            <Link to="/chapters" className="inline-flex items-center gap-2 text-gold-600 font-semibold hover:text-gold-700 transition-colors">
+              View All Chapters <ArrowRight size={20} />
             </Link>
           </div>
         </div>

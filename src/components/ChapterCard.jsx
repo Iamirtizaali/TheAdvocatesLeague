@@ -3,11 +3,11 @@ import { motion } from 'framer-motion'
 import { ArrowRight } from 'lucide-react'
 import { urlFor } from '../sanity/client'
 
-export default function SubSectionCard({ section, index }) {
-  const title = section.title || 'PULC'
-  const description = section.description || 'Promoting leadership and policy understanding among law students.'
-  const imageUrl = section.image ? urlFor(section.image).url() : 'https://images.unsplash.com/photo-1575509545089-8dcb4e11cc7c?auto=format&fit=crop&q=80&w=600'
-  const slug = section.slug?.current || 'pulc'
+export default function ChapterCard({ chapter, index }) {
+  const title = chapter?.title || 'Lahore Chapter'
+  const description = chapter?.description || 'Coordinating campuses in Lahore.'
+  const imageUrl = chapter?.image ? urlFor(chapter.image).url() : 'https://images.unsplash.com/photo-1575509545089-8dcb4e11cc7c?auto=format&fit=crop&q=80&w=600'
+  const slug = chapter?.slug?.current || 'lahore'
 
   return (
     <motion.div
@@ -33,10 +33,10 @@ export default function SubSectionCard({ section, index }) {
             {description}
           </p>
           <Link 
-            to={`/sections/${slug}`}
+            to={`/chapters/${slug}`}
             className="inline-flex items-center gap-2 bg-gold-600 hover:bg-gold-500 text-white px-6 py-2.5 rounded-md font-semibold transition-colors opacity-0 group-hover:opacity-100 duration-500 delay-200"
           >
-            Explore Section
+            Explore Chapter
             <ArrowRight size={18} />
           </Link>
         </div>
