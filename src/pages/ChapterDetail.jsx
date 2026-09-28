@@ -158,24 +158,22 @@ export default function ChapterDetail() {
         </div>
 
         {/* Supervisory Team Section */}
-        <div>
-          <div className="flex flex-col md:flex-row justify-between items-center mb-10">
-            <h2 className="text-3xl font-serif font-bold text-navy-900">Supervisory Team</h2>
-            
-            <div className="mt-4 md:mt-0 flex items-center gap-3">
-              <span className="text-gray-600 font-medium">Tenure Year:</span>
-              <select 
-                value={year}
-                onChange={(e) => setYear(e.target.value)}
-                className="bg-white border border-gray-300 text-gray-700 py-2 px-4 rounded-lg focus:outline-none focus:ring-2 focus:ring-gold-500 focus:border-transparent font-medium shadow-sm cursor-pointer"
-              >
-                <option value="2026-27">2026-27</option>
-                <option value="2025-26">2025-26</option>
-                <option value="2024-25">2024-25</option>
-                <option value="2023-24">2023-24</option>
-              </select>
+        {chapter?.slug?.current !== 'ambassadors' && (
+          <div>
+            <div className="flex flex-col md:flex-row justify-between items-center mb-10">
+              <h2 className="text-3xl font-serif font-bold text-navy-900">Supervisory Team</h2>
+              
+              <div className="mt-4 md:mt-0 flex items-center gap-3">
+                <span className="text-gray-600 font-medium">Tenure Year:</span>
+                <select 
+                  value={year}
+                  onChange={(e) => setYear(e.target.value)}
+                  className="bg-white border border-gray-300 text-gray-700 py-2 px-4 rounded-lg focus:outline-none focus:ring-2 focus:ring-gold-500 focus:border-transparent font-medium shadow-sm cursor-pointer"
+                >
+                  <option value="2026-27">2026-27</option>
+                </select>
+              </div>
             </div>
-          </div>
 
           {loading ? (
              <div className="flex justify-center p-10">
@@ -193,6 +191,7 @@ export default function ChapterDetail() {
             </div>
           )}
         </div>
+        )}
         
       </div>
     </div>
