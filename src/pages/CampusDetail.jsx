@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react'
 import { useParams, Link } from 'react-router-dom'
 import { ArrowLeft } from 'lucide-react'
 import SEO from '../components/SEO'
-import TeamMemberCard from '../components/TeamMemberCard'
+import TeamCard from '../components/TeamCard'
 import { client, urlFor } from '../sanity/client'
 import { CAMPUS_BY_SLUG_QUERY, CAMPUS_TEAM_QUERY } from '../sanity/queries'
 import { PortableText } from '@portabletext/react'
@@ -104,7 +104,7 @@ export default function CampusDetail() {
           ) : team.length > 0 ? (
             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
               {team.map((member, index) => (
-                <TeamMemberCard key={index} member={member} index={index} />
+                <TeamCard key={index} member={member} index={index} />
               ))}
             </div>
           ) : (
