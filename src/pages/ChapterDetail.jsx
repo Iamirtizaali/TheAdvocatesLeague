@@ -158,7 +158,7 @@ export default function ChapterDetail() {
         </div>
 
         {/* Supervisory Team Section */}
-        {chapter?.slug?.current !== 'ambassadors' && (
+        {slug !== 'ambassadors' && (
           <div>
             <div className="flex flex-col md:flex-row justify-between items-center mb-10">
               <h2 className="text-3xl font-serif font-bold text-navy-900">Supervisory Team</h2>
