@@ -33,11 +33,17 @@ export default async function handler(req, res) {
       const bufferStream = new stream.PassThrough();
       bufferStream.end(buffer);
 
+      const requestBody = {
+        name: filename,
+        mimeType: mimeType,
+      };
+
+      if (process.env.GOOGLE_DRIVE_FOLDER_ID) {
+        requestBody.parents = [process.env.GOOGLE_DRIVE_FOLDER_ID];
+      }
+
       const response = await drive.files.create({
-        requestBody: {
-          name: filename,
-          mimeType: mimeType,
-        },
+        requestBody: requestBody,
         media: {
           mimeType: mimeType,
           body: bufferStream,
