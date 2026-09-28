@@ -68,7 +68,7 @@ export default function Navbar() {
             </Link>
           ))}
           <Link
-            to="/contact"
+            to="/join"
             className="px-5 py-2.5 bg-gold-600 hover:bg-gold-500 text-white font-medium rounded-md transition-colors shadow-lg hover:shadow-gold-500/30"
           >
             Join Us
@@ -107,7 +107,7 @@ export default function Navbar() {
                 </Link>
               ))}
               <Link
-                to="/contact"
+                to="/join"
                 className="mt-4 text-center px-5 py-3 bg-navy-900 text-gold-500 font-bold rounded-lg"
               >
                 Become a Member

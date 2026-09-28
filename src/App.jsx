@@ -12,6 +12,7 @@ import EventDetail from './pages/EventDetail'
 import Blogs from './pages/Blogs'
 import BlogDetail from './pages/BlogDetail'
 import Contact from './pages/Contact'
+import Join from './pages/Join'
 import NotFound from './pages/NotFound'
 import ScrollToTop from './components/ScrollToTop'
 
@@ -33,6 +34,7 @@ function App() {
           <Route path="/blogs" element={<Blogs />} />
           <Route path="/blogs/:slug" element={<BlogDetail />} />
           <Route path="/contact" element={<Contact />} />
+          <Route path="/join" element={<Join />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </main>
