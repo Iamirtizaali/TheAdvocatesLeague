@@ -48,7 +48,11 @@ export default function Home() {
           },
           events: eventsData && eventsData.length > 0 ? eventsData.slice(0, 3) : [{}, {}, {}],
           blogs: blogsData && blogsData.length > 0 ? blogsData.slice(0, 3) : [{}, {}, {}],
-          chapters: chaptersData && chaptersData.length > 0 ? chaptersData.slice(0, 3) : [{}, {}, {}]
+          chapters: chaptersData && chaptersData.length > 0 ? chaptersData.slice(0, 3) : [
+            { title: 'Lahore Chapter', slug: { current: 'lahore' }, description: 'Coordinating campuses in Lahore.' },
+            { title: 'Sahiwal Chapter', slug: { current: 'sahiwal' }, description: 'Coordinating campuses in Sahiwal.' },
+            { title: 'Ambassadors Program', slug: { current: 'ambassadors' }, description: 'Connecting student ambassadors.' }
+          ]
         })
       } catch (error) {
         console.error("Error fetching data:", error)
