@@ -90,6 +90,7 @@ export default function CampusDetail() {
                 className="bg-white border border-gray-300 text-gray-700 py-2 px-4 rounded-lg focus:outline-none focus:ring-2 focus:ring-gold-500 focus:border-transparent font-medium shadow-sm cursor-pointer"
               >
                 <option value="2026-27">2026-27</option>
+                <option value="2025-26">2025-26</option>
               </select>
             </div>
           </div>
