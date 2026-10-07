@@ -117,6 +117,12 @@ export default async function handler(req, res) {
 
   } catch (error) {
     console.error('Error submitting application:', error);
-    return res.status(500).json({ success: false, message: 'Internal Server Error', error: error.message });
+    
+    let userMessage = 'Internal Server Error';
+    if (error.message === 'invalid_grant') {
+      userMessage = 'Google Authentication expired. The site administrator needs to generate a new refresh token.';
+    }
+
+    return res.status(500).json({ success: false, message: userMessage, error: error.message });
   }
 }
