@@ -1,7 +1,19 @@
-import { google } from 'googleapis';
-import stream from 'stream';
+import { createClient } from '@supabase/supabase-js';
+import { v2 as cloudinary } from 'cloudinary';
 
-// Ensure this function only runs on POST requests
+// Initialize Supabase
+const supabase = createClient(
+  process.env.SUPABASE_URL,
+  process.env.SUPABASE_SERVICE_ROLE_KEY
+);
+
+// Initialize Cloudinary
+cloudinary.config({
+  cloud_name: process.env.CLOUDINARY_CLOUD_NAME,
+  api_key: process.env.CLOUDINARY_API_KEY,
+  api_secret: process.env.CLOUDINARY_API_SECRET,
+});
+
 export default async function handler(req, res) {
   if (req.method !== 'POST') {
     return res.status(405).json({ message: 'Method Not Allowed' });
@@ -9,120 +21,51 @@ export default async function handler(req, res) {
 
   try {
     const data = req.body;
-    
-    // Set up Google OAuth2 Client
-    const oAuth2Client = new google.auth.OAuth2(
-      process.env.GOOGLE_CLIENT_ID,
-      process.env.GOOGLE_CLIENT_SECRET,
-      process.env.GOOGLE_REDIRECT_URI
-    );
-    
-    oAuth2Client.setCredentials({ refresh_token: process.env.GOOGLE_REFRESH_TOKEN });
 
-    const drive = google.drive({ version: 'v3', auth: oAuth2Client });
-    const sheets = google.sheets({ version: 'v4', auth: oAuth2Client });
-
-    // Helper function to upload base64 file to Google Drive
-    const uploadToDrive = async (base64String, filename, mimeType) => {
-      if (!base64String) return 'Not Provided';
-      
-      // Remove the data URI prefix (e.g., "data:image/jpeg;base64,")
-      const base64Data = base64String.split(',')[1];
-      const buffer = Buffer.from(base64Data, 'base64');
-      
-      const bufferStream = new stream.PassThrough();
-      bufferStream.end(buffer);
-
-      const requestBody = {
-        name: filename,
-        mimeType: mimeType,
-      };
-
-      if (process.env.GOOGLE_DRIVE_FOLDER_ID) {
-        requestBody.parents = [process.env.GOOGLE_DRIVE_FOLDER_ID];
+    const uploadToCloudinary = async (base64String, folder) => {
+      if (!base64String) return null;
+      try {
+        const uploadResponse = await cloudinary.uploader.upload(base64String, {
+          folder: `theadvocatesleague/${folder}`,
+        });
+        return uploadResponse.secure_url;
+      } catch (error) {
+        console.error('Cloudinary upload error:', error);
+        return null;
       }
-
-      const response = await drive.files.create({
-        requestBody: requestBody,
-        media: {
-          mimeType: mimeType,
-          body: bufferStream,
-        },
-        fields: 'id, webViewLink',
-      });
-
-      // Make the file publicly accessible so anyone with the link can view it
-      await drive.permissions.create({
-        fileId: response.data.id,
-        requestBody: {
-          role: 'reader',
-          type: 'anyone',
-        }
-      });
-
-      return response.data.webViewLink;
     };
 
-    let pictureLink = 'Not Provided';
-    let cardLink = 'Not Provided';
+    let pictureUrl = await uploadToCloudinary(data.professionalPictureBase64, 'pictures');
+    let cardUrl = await uploadToCloudinary(data.studentCardBase64, 'cards');
 
-    // Upload Professional Picture if provided
-    if (data.professionalPictureBase64) {
-      pictureLink = await uploadToDrive(
-        data.professionalPictureBase64, 
-        `${data.name} - Picture`, 
-        data.professionalPictureMimeType
-      );
+    // Prepare row data for Supabase
+    const { error: dbError } = await supabase
+      .from('applications')
+      .insert([
+        {
+          selected_drive: data.selectedDrive,
+          name: data.name,
+          father_name: data.fatherName,
+          cnic: data.cnic,
+          contact_number: data.contactNumber,
+          email: data.email,
+          institution: data.institution,
+          semester_year: data.semesterYear,
+          position: data.position,
+          reason: data.reason,
+          professional_picture_url: pictureUrl,
+          student_card_url: cardUrl,
+        }
+      ]);
+
+    if (dbError) {
+      throw dbError;
     }
-
-    // Upload Student Card if provided
-    if (data.studentCardBase64) {
-      cardLink = await uploadToDrive(
-        data.studentCardBase64, 
-        `${data.name} - Card`, 
-        data.studentCardMimeType
-      );
-    }
-
-    // Prepare row data for Google Sheets
-    // Columns: Timestamp, Drive, Name, Father Name, CNIC, Contact, Email, Institution, Semester/Year, Position, Reason, Picture Link, Card Link
-    const rowData = [
-      new Date().toLocaleString(),
-      data.selectedDrive,
-      data.name,
-      data.fatherName,
-      data.cnic,
-      data.contactNumber,
-      data.email,
-      data.institution,
-      data.semesterYear,
-      data.position,
-      data.reason,
-      pictureLink,
-      cardLink
-    ];
-
-    // Append to Google Sheet
-    await sheets.spreadsheets.values.append({
-      spreadsheetId: process.env.GOOGLE_SHEET_ID,
-      range: 'Sheet1!A:M', // Adjust to match your sheet name if it's not "Sheet1"
-      valueInputOption: 'USER_ENTERED',
-      insertDataOption: 'INSERT_ROWS',
-      requestBody: {
-        values: [rowData],
-      },
-    });
 
     return res.status(200).json({ success: true, message: 'Application submitted successfully!' });
 
   } catch (error) {
     console.error('Error submitting application:', error);
-    
-    let userMessage = 'Internal Server Error';
-    if (error.message === 'invalid_grant') {
-      userMessage = 'Google Authentication expired. The site administrator needs to generate a new refresh token.';
-    }
-
-    return res.status(500).json({ success: false, message: userMessage, error: error.message });
+    return res.status(500).json({ success: false, message: 'Internal Server Error', error: error.message });
   }
 }

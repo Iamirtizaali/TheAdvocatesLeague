@@ -15,6 +15,7 @@ import BlogDetail from './pages/BlogDetail'
 import Contact from './pages/Contact'
 import Join from './pages/Join'
 import NotFound from './pages/NotFound'
+import Admin from './pages/Admin'
 import ScrollToTop from './components/ScrollToTop'
 
 function App() {
@@ -37,6 +38,7 @@ function App() {
           <Route path="/blogs/:slug" element={<BlogDetail />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/join" element={<Join />} />
+          <Route path="/admin" element={<Admin />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </main>
