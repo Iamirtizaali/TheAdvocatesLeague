@@ -1,6 +1,6 @@
 import { createClient } from '@supabase/supabase-js';
 import jwt from 'jsonwebtoken';
-import * as cookie from 'cookie';
+import { parseCookie } from 'cookie';
 
 export default async function handler(req, res) {
   if (req.method !== 'GET') {
@@ -8,7 +8,7 @@ export default async function handler(req, res) {
   }
 
   // Verify auth
-  const cookies = cookie.parse(req.headers.cookie || '');
+  const cookies = parseCookie(req.headers.cookie || '');
   const token = cookies.admin_token;
   const jwtSecret = process.env.JWT_SECRET || 'super_secret_jwt_key_for_tal';
 

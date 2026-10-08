@@ -1,5 +1,5 @@
 import jwt from 'jsonwebtoken';
-import * as cookie from 'cookie';
+import { stringifySetCookie } from 'cookie';
 
 export default function handler(req, res) {
   if (req.method !== 'POST') {
@@ -14,7 +14,9 @@ export default function handler(req, res) {
   if (username === adminUsername && password === adminPassword) {
     const token = jwt.sign({ role: 'admin' }, jwtSecret, { expiresIn: '1d' });
     
-    res.setHeader('Set-Cookie', cookie.serialize('admin_token', token, {
+    res.setHeader('Set-Cookie', stringifySetCookie({
+      name: 'admin_token',
+      value: token,
       httpOnly: true,
       secure: process.env.NODE_ENV !== 'development',
       maxAge: 60 * 60 * 24, // 1 day
