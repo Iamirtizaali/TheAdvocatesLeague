@@ -1,5 +1,5 @@
 import jwt from 'jsonwebtoken';
-import cookie from 'cookie';
+import * as cookie from 'cookie';
 
 export default function handler(req, res) {
   if (req.method !== 'POST') {

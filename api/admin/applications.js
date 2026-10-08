@@ -1,6 +1,6 @@
 import { createClient } from '@supabase/supabase-js';
 import jwt from 'jsonwebtoken';
-import cookie from 'cookie';
+import * as cookie from 'cookie';
 
 export default async function handler(req, res) {
   if (req.method !== 'GET') {
